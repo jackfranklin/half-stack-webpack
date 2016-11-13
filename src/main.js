@@ -1,6 +1,8 @@
-import buttonFn from './button'
-
 const button = document.getElementById('click-me')
 
-button.addEventListener('click', buttonFn)
+button.addEventListener('click', e => {
+  System.import('./button').then(buttonModule => {
+    buttonModule.default(e)
+  })
+});
 console.log('Hello World')

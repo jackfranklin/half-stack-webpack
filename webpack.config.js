@@ -4,6 +4,7 @@ module.exports = function(env) {
     output: {
       path: './dist',
       filename: 'main.js',
+      publicPath: '/dist/'
     },
     devtool: env.build === 'dev' ? 'eval' : 'source-map',
     module: {
