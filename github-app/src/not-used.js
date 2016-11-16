@@ -1,0 +1,2 @@
+export const SO_NOT_USED = 'I AM NOT USED BY ANYTHING EVER'
+export const SO_USED = 'I GET USED BY THINGS'
