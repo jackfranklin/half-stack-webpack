@@ -624,7 +624,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 ...
 plugins: removeEmpty([
   ifProduction(new webpack.optimize.UglifyJsPlugin()),
-  ifProduction(new ExtractTextPlugin('style.css'))
+  new ExtractTextPlugin('style.css'),
 ]),
 ```
 
@@ -633,13 +633,7 @@ plugins: removeEmpty([
 {
   test: /\.css$/,
   include: path.resolve('src'),
-  // if we're in production, use the special ExtractTextPlugin loader
-  loader: ifProduction(ExtractTextPlugin.extract('css-loader')),
-  // if not in production, stick to what we had before
-  use: ifNotProduction([
-    { loader: 'style-loader' },
-    { loader: 'css-loader' },
-  ])
+  loader: ExtractTextPlugin.extract('css-loader'),
 }
 ```
 ---
@@ -745,13 +739,39 @@ You pay a small cost because Webpack has code that it inserts for lazily loading
 
 ---
 
-Currently, ng-store loads 900kb of JavaScript at once, and we only need the code for the listings page when the user first visits.
-
-At least 30% of that could be lazily loaded, potentially more.
-
-(Post React migratoin this becomes much easier).
+![fit](todomvc.png)
 
 ---
+
+## No Lazy loading
+
+```
+bundle.app.193adde67586dd61304b.js     444 kB
+```
+
+---
+
+## Lazily loading the graph component
+
+```
+bundle.0.513a048a93c5b8f1687b.js     431 kB
+bundle.app.ce8bc2ebcec6edbff6a1.js    13.1 kB
+```
+
+---
+
+![fit](nonlazy.png)
+
+---
+
+![fit](lazy.png)
+
+---
+
+![fit](lazybundle.png)
+
+---
+
 
 ## Bonus: dead code elimination
 

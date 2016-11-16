@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: removeEmpty([
     ifProduction(new webpack.optimize.UglifyJsPlugin()),
-    ifProduction(new ExtractTextPlugin('style.css')),
+    new ExtractTextPlugin('style.css'),
   ]),
   module: {
     rules: [
@@ -33,11 +33,7 @@ module.exports = {
       {
         test: /\.css$/,
         include: path.resolve('src'),
-        loader: ifProduction(ExtractTextPlugin.extract('css-loader')),
-        use: ifNotProduction([
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ])
+        loader: ExtractTextPlugin.extract('css-loader')
       }
     ]
   }
