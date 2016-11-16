@@ -848,6 +848,25 @@ function(t,e,r){r(1),t.exports=r(0)}]);
 
 ## Webpack 2 + ES2015 modules = smaller builds, for free!
 
+---
+
+![fit](webpacksite.png)
+
+---
+
+## Webpack 2
+
+- Much improved documentation & community engagement
+- Improved configuration with a nicer API and automatic validation of config
+- Tree shaking, easier code splitting and lazy loading
+- More performant
+
+---
+
+## Fin
+
+Slides & code: https://github.com/jackfranklin/half-stack-webpack
+
 
 
 
