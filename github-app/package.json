@@ -11,7 +11,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "6.18.2",
+    "babel-loader": "6.2.7",
+    "babel-preset-es2015": "6.18.0",
+    "css-loader": "0.25.0",
+    "style-loader": "0.13.1",
     "webpack": "2.1.0-beta.26",
     "webpack-dev-server": "2.1.0-beta.11"
+  },
+  "dependencies": {
+    "whatwg-fetch": "1.0.0"
   }
 }
