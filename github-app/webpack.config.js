@@ -1,4 +1,9 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var webpack = require('webpack')
 var path = require('path')
+
+var { getIfUtils, removeEmpty } = require('webpack-config-utils')
+var { ifProduction, ifNotProduction } = getIfUtils(process.env.NODE_ENV || 'development')
 
 module.exports = {
   entry: {
@@ -7,8 +12,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    publicPath: '/dist/',
+    publicPath: '/dist/'
   },
+  plugins: removeEmpty([
+    ifProduction(new webpack.optimize.UglifyJsPlugin()),
+    ifProduction(new ExtractTextPlugin('style.css')),
+  ]),
   module: {
     rules: [
       {
@@ -24,11 +33,11 @@ module.exports = {
       {
         test: /\.css$/,
         include: path.resolve('src'),
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }]
+        loader: ifProduction(ExtractTextPlugin.extract('css-loader')),
+        use: ifNotProduction([
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ])
       }
     ]
   }

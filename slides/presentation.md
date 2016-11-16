@@ -535,4 +535,207 @@ __Loaders are applied from right to left, or bottom to top__
 
 ---
 
+## Deploying to Production
+
+---
+
+## Configuring Webpack differently
+
+---
+
+```js
+"scripts": {
+  "build:dev": "webpack --watch",
+  "build:prod": "NODE_ENV=production webpack",
+  "start": "webpack-dev-server"
+},
+```
+
+---
+
+## `npm install --save-dev webpack-config-utils`
+
+---
+
+```js
+var { getIfUtils, removeEmpty } = require('webpack-config-utils')
+var {
+  ifProduction,
+  ifNotProduction
+} = getIfUtils(process.env.NODE_ENV || 'development')
+```
+
+- `removeEmpty`: removes `undefined` from arrays
+- `ifProduction`: returns what it's given if `NODE_ENV === 'production'`
+- `ifNotProduction`: returns what it's given if `NODE_ENV !== 'production'`
+
+---
+
+## Starting point
+
+```
+npm run build:prod
+
+- main.js: 24.9kb
+```
+
+(All CSS is contained within main.js and dynamically inserted)
+
+---
+
+## Minifying
+
+```js
+var webpack = require('webpack')
+
+...
+output: { ...  },
+plugins: removeEmpty([
+  ifProduction(new webpack.optimize.UglifyJsPlugin())
+]),
+module: { ...  }
+```
+
+---
+
+```
+npm run build:prod
+
+- main.js: 11.4kb
+```
+
+---
+
+## Nice, but why have the CSS injected with JavaScript?
+
+```
+npm install --save-dev extract-text-webpack-plugin@v2.0.0-beta.4
+```
+
+---
+
+```js
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+...
+plugins: removeEmpty([
+  ifProduction(new webpack.optimize.UglifyJsPlugin()),
+  ifProduction(new ExtractTextPlugin('style.css'))
+]),
+```
+
+---
+```js
+{
+  test: /\.css$/,
+  include: path.resolve('src'),
+  // if we're in production, use the special ExtractTextPlugin loader
+  loader: ifProduction(ExtractTextPlugin.extract('css-loader')),
+  // if not in production, stick to what we had before
+  use: ifNotProduction([
+    { loader: 'style-loader' },
+    { loader: 'css-loader' },
+  ])
+}
+```
+---
+
+## Deep breaths, lots of progress!
+
+```
+npm run build:prod
+
+- main.js: 7.46kb
+- style.css: 140bytes
+```
+
+---
+
+## Finally: code splitting / lazy loading
+
+---
+
+## We should keep our first page load super quick
+
+- download JS
+- parse JS
+- execute JS
+
+This takes time.
+
+---
+
+## `src/fetch-person.js`
+
+```js
+export const fetchPerson = username =>
+  fetch(`https://api.github.com/users/${username}`)
+    .then(d => d.json())
+    .then(displayPerson)
+
+const displayPerson = user =>
+  document.getElementById('results').innerHTML = `
+    <h1>${user.name}</h1>
+    <h3>${user.company}</h3>
+    <p>${user.bio || 'No Bio :('}</p>
+  `
+```
+
+---
+
+```js
+import './style.css'
+import { fetchPerson } from './fetch-person'
+
+const form = document.getElementById('github-form')
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  const username = document.getElementById('input-box').value
+  fetchPerson(username)
+})
+```
+
+---
+
+## We only need `fetchPerson` _if_ the user clicks the button
+
+---
+
+```js
+import './style.css'
+const form = document.getElementById('github-form')
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  const username = document.getElementById('input-box').value
+  System.import('./fetch-person')
+    .then(module => module.fetchPerson)
+    .then(fetchPerson => fetchPerson(username))
+})
+```
+
+---
+
+![fit autoplay loop](codesplit.mov)
+
+---
+
+## And now we can build to production:
+
+---
+
+```
+npm run build:prod
+
+- main.js: 8.08kb
+- 0.main.js: 387bytes
+- style.css: 140bytes
+```
+
+---
+
+## Wait, the build, went up?
+
+This is a contrived example, because this app is tiny!
+
+---
+
 
