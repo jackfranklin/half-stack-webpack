@@ -276,6 +276,8 @@ fetch('https://api.github.com/users/jackfranklin')
   })
 ```
 
+Would be much nicer as:
+
 ```js
 const username = 'jackfranklin'
 fetch(`https://api.github.com/users/${username}`)
@@ -380,9 +382,12 @@ fetch(`https://api.github.com/users/${username}`)
 
 ---
 
-## `src/main.js` => `dist/main.js`
 
-## `whatwg-fetch, src/main.js` => `dist/main.js`
+### `src/main.js` => `dist/main.js`
+
+--
+
+### `whatwg-fetch, src/main.js` => `dist/main.js`
 
 ---
 
@@ -742,6 +747,10 @@ You pay a small cost because Webpack has code that it inserts for lazily loading
 
 Currently, ng-store loads 900kb of JavaScript at once, and we only need the code for the listings page when the user first visits.
 
+At least 30% of that could be lazily loaded, potentially more.
+
+(Post React migratoin this becomes much easier).
+
 ---
 
 ## Bonus: dead code elimination
@@ -847,6 +856,10 @@ function(t,e,r){r(1),t.exports=r(0)}]);
 ---
 
 ## Webpack 2 + ES2015 modules = smaller builds, for free!
+
+---
+
+## There's loads more I've not even got to yet
 
 ---
 
