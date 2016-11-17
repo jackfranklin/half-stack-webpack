@@ -1,9 +1,5 @@
 import './style.css'
 
-import { SO_USED } from './not-used'
-
-console.log(SO_USED)
-
 const form = document.getElementById('github-form')
 
 form.addEventListener('submit', e => {

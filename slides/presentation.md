@@ -76,6 +76,14 @@ And create a more optimised bundle, saving the browser (and user) time
 
 ---
 
+![](https://share.sandia.gov/news/resources/news_releases/images/2011/hermes.jpg)
+
+---
+
+![](factory.png)
+
+---
+
 ![fit](diagram1.png)
 
 ---
@@ -316,9 +324,7 @@ module.exports = {
 
 ## Webpack Rules
 
-- `test`: criteria for which files this rule should apply to
-- `include`: which folder Webpack will look in to find files to apply the rule to
-- `use`: which loaders should be run for these files
+Apply transformations to certain files.
 
 ---
 
@@ -533,6 +539,42 @@ __Loaders are applied from right to left, or bottom to top__
 
 ---
 
+![fit](rules/diagrams.001.png)
+
+---
+
+![fit](rules/diagrams.002.png)
+
+---
+
+![fit](rules/diagrams.003.png)
+
+---
+
+![fit](rules/diagrams.004.png)
+
+---
+
+![fit](rules/diagrams.005.png)
+
+---
+
+![fit](rules/diagrams.006.png)
+
+---
+
+![fit](rules/diagrams.007.png)
+
+---
+
+![fit](rules/diagrams.008.png)
+
+---
+
+![fit](rules/diagrams.009.png)
+
+---
+
 ## Restart webpack-dev-server
 
 ---
@@ -589,6 +631,12 @@ npm run build:prod
 
 ---
 
+## Plugins
+
+A Webpack plugin will typically work on the bundle as a whole, rather than on individual files.
+
+---
+
 ## Minifying
 
 ```js
@@ -601,6 +649,18 @@ plugins: removeEmpty([
 ]),
 module: { ...  }
 ```
+
+---
+
+![fit](uglify/uglify.001.png)
+
+---
+
+![fit](uglify/uglify.002.png)
+
+---
+
+![fit](uglify/uglify.003.png)
 
 ---
 
@@ -637,6 +697,10 @@ plugins: removeEmpty([
   loader: ExtractTextPlugin.extract('css-loader'),
 }
 ```
+---
+
+![fit](extract-text/extract-text.001.png)
+
 ---
 
 ## Deep breaths, lots of progress!
