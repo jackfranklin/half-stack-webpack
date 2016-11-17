@@ -837,6 +837,12 @@ bundle.app.ce8bc2ebcec6edbff6a1.js   13.1 kB
 
 ---
 
+## Lazy loading: not a silver bullet
+
+But when you do want it, Webpack makes it easy :)
+
+---
+
 
 ## Bonus: dead code elimination
 
