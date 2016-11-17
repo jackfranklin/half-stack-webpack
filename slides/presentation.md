@@ -28,7 +28,17 @@
 
 ---
 
-# Ah.
+![](https://i.ytimg.com/vi/5NPBIwQyPWE/maxresdefault.jpg)
+
+---
+
+![left](boiler.png)
+
+![right fit](plate.png)
+
+---
+
+## Boilerplates are great, once you know the tool
 
 ---
 
@@ -72,15 +82,11 @@ And create a more optimised bundle, saving the browser (and user) time
 
 ---
 
+![fit](webpack-graph.png)
+
+---
+
 ## Webpack is not just for JavaScript
-
----
-
-![](https://share.sandia.gov/news/resources/news_releases/images/2011/hermes.jpg)
-
----
-
-![](factory.png)
 
 ---
 
@@ -124,7 +130,7 @@ A Webpack plugin that can parse certain types of files and do something to them
 
 ---
 
-![fit](loader.png)
+![fit](loader-diagram.png)
 
 ---
 
