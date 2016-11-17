@@ -756,7 +756,7 @@ bundle.app.193adde67586dd61304b.js     444 kB
 
 ```
 bundle.0.513a048a93c5b8f1687b.js     431 kB
-bundle.app.ce8bc2ebcec6edbff6a1.js    13.1 kB
+bundle.app.ce8bc2ebcec6edbff6a1.js   13.1 kB
 ```
 
 ---
@@ -794,10 +794,19 @@ This means we can eliminate any code relating to ununsed exports!
 
 ---
 
-## `src/fetch-person.js`
+## `src/not-used.js`
 
 ```js
 export const SO_NOT_USED = 'I AM NOT USED BY ANYTHING EVER'
+export const SO_USED = 'I GET USED BY THINGS'
+```
+
+## `src/main.js`
+
+```js
+import { SO_USED } from './not-used'
+
+console.log(SO_USED)
 ```
 
 ---
@@ -805,11 +814,7 @@ export const SO_NOT_USED = 'I AM NOT USED BY ANYTHING EVER'
 ## Doesn't work by default with Babel :(
 
 ```js
-webpackJsonp([0],{4:function(n,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});
-var t=(e.fetchPerson=function(n){return fetch("https://api.github.com/users/"+n).
-wthen(function(n){return n.json()}).then(t)},function(n){return document.getElementById("results").innerHTML=
-"\n    <h1>"+n.name+"</h1>\n    <h3>"+n.company+"</h3>\n    <p>"+
-(n.bio||"No Bio :(")+"</p>\n  "});e.SO_NOT_USED="I AM NOT USED BY ANYTHING EVER"}});
+e.SO_NOT_USED="I AM NOT USED BY ANYTHING EVER"
 ```
 
 ---
@@ -819,51 +824,12 @@ wthen(function(n){return n.json()}).then(t)},function(n){return document.getElem
 Stop Babel converting:
 
 ```js
-import x from 'y' => var x = require('y')
-```
-
-```js
 use: [{
   loader: 'babel-loader',
   options: {
     presets: [['es2015', { modules: false }]]
   }
 }]
-```
-
----
-
-## Still didn't work!
-
-```js
-webpackJsonp([0],{4:function(n,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});
-var t=(e.fetchPerson=function(n){return fetch("https://api.github.com/users/"+n).
-wthen(function(n){return n.json()}).then(t)},function(n){return document.getElementById("results").innerHTML=
-"\n    <h1>"+n.name+"</h1>\n    <h3>"+n.company+"</h3>\n    <p>"+
-(n.bio||"No Bio :(")+"</p>\n  "});e.SO_NOT_USED="I AM NOT USED BY ANYTHING EVER"}});
-```
-
----
-
-## You can't eliminate dead code from dynamic imports
-
----
-
-## `src/not-used.js`
-
-```js
-export const SO_NOT_USED = 'I AM NOT USED BY ANYTHING EVER'
-export const SO_USED = 'I GET USED BY THINGS'
-```
-
----
-
-## `src/main.js`
-
-```js
-import { SO_USED } from './not-used'
-
-console.log(SO_USED)
 ```
 
 ---
@@ -899,10 +865,5 @@ function(t,e,r){r(1),t.exports=r(0)}]);
 
 ## Fin
 
-Slides & code: https://github.com/jackfranklin/half-stack-webpack
-
-
-
-
-
-
+- Slides & code: https://github.com/jackfranklin/half-stack-webpack
+- Webpack 2: webpack.js.org
