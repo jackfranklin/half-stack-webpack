@@ -396,21 +396,21 @@ fetch(`https://api.github.com/users/${username}`)
 ---
 
 
-### `src/main.js` => `dist/main.js`
-
---
-
-### `whatwg-fetch, src/main.js` => `dist/main.js`
-
----
 
 ## Entry points
 
 ```js
 entry: {
-  main: ['whatwg-fetch', path.resolve('src', 'main.js')]
+  main: [
+    'whatwg-fetch',
+    path.resolve('src', 'main.js')
+  ]
 },
 ```
+
+---
+
+![fit](entry-points.png)
 
 ---
 
