@@ -931,3 +931,4 @@ function(t,e,r){r(1),t.exports=r(0)}]);
 
 - Slides & code: https://github.com/jackfranklin/half-stack-webpack
 - Webpack 2: webpack.js.org
+- Me: @Jack_Franklin, javascriptplayground.com
