@@ -3,6 +3,13 @@
 
 ---
 
+## The modern JS developer's workflow
+
+---
+
+![fit](bubble.png)
+
+---
 
 ## The modern developer's webpack workflow
 
