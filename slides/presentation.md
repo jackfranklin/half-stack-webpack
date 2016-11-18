@@ -823,7 +823,7 @@ npm run build:prod
 
 ---
 
-## Wait, the build, went up?
+## Wait, the build went up?
 
 This is a contrived example, because this app is tiny!
 
@@ -849,6 +849,10 @@ bundle.app.193adde67586dd61304b.js     444 kB
 bundle.0.513a048a93c5b8f1687b.js     431 kB
 bundle.app.ce8bc2ebcec6edbff6a1.js   13.1 kB
 ```
+
+---
+
+## 400kb first load saving
 
 ---
 
@@ -908,14 +912,6 @@ console.log(SO_USED)
 
 ---
 
-## Doesn't work by default with Babel :(
-
-```js
-e.SO_NOT_USED="I AM NOT USED BY ANYTHING EVER"
-```
-
----
-
 ## Stop Babel converting modules
 
 Stop Babel converting:
@@ -931,23 +927,13 @@ use: [{
 
 ---
 
-```js
-function(t,e,r){"use strict";r.d(e,"a",function(){return n});
-var n="I GET USED BY THINGS"},function(t,e){},
-function(t,e,r){r(1),t.exports=r(0)}]);
-```
-
----
-
 ## webpack 2 + ES2015 modules = smaller builds, for free!
 
 ---
 
-## There's loads more I've not even got to yet
-
----
-
 ![fit](webpacksite.png)
+
+## I've barely scratched the surface.
 
 ---
 
@@ -964,6 +950,6 @@ function(t,e,r){r(1),t.exports=r(0)}]);
 
 - Slides & code: https://github.com/jackfranklin/half-stack-webpack
 - webpack 2: webpack.js.org
-- Me: @Jack_Franklin, javascriptplayground.com
+- Me: @Jack_Franklin, javascriptplayground.com, elmplayground.com
 
 Thanks to: Glen Maddern, Sean Larkinn, Kent C Dodds
