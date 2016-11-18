@@ -12,7 +12,7 @@
 
 ---
 
-## 2. Find StackOverflow post
+![fit](https://i.stack.imgur.com/A7NsC.gif)
 
 ---
 
@@ -138,7 +138,17 @@ A function that takes a file's source and transforms it to return a new source f
 
 ---
 
-## `npm install --save-dev webpack@2.1.0-beta.26`
+## `npm init -y`
+
+PSA: Don't install things globally!
+
+---
+
+### `npm install --save-dev webpack@2.1.0-beta.26`
+
+Run locally with `./node_modules/.bin/webpack`
+
+(Or add `./node_modules/.bin` to your `$PATH`)
 
 ---
 
