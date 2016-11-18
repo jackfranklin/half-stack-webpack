@@ -50,7 +50,7 @@
 
 ---
 
-# Firstly: do you _actually_ need Webpack?
+# Firstly: do you _actually_ need webpack?
 
 ---
 
@@ -60,7 +60,7 @@ Glen Madern: https://frontend.center/
 
 ---
 
-# What is Webpack?
+# What is webpack?
 
 ---
 
@@ -68,7 +68,7 @@ Glen Madern: https://frontend.center/
 
 ---
 
-## Webpack does what the browser would do if given your app:
+## webpack does what the browser would do if given your app:
 
 - find all images in your CSS and download them
 - parse your JavaScript dependencies and download them
@@ -76,7 +76,7 @@ Glen Madern: https://frontend.center/
 
 ---
 
-## Webpack can do this right at the beginning
+## webpack can do this right at the beginning
 
 And create a more optimised bundle, saving the browser (and user) time
 
@@ -86,7 +86,7 @@ And create a more optimised bundle, saving the browser (and user) time
 
 ---
 
-## Webpack is not just for JavaScript
+## webpack is not just for JavaScript
 
 ---
 
@@ -102,7 +102,7 @@ And create a more optimised bundle, saving the browser (and user) time
 
 ---
 
-## Webpack Terminology to tell your friends
+## webpack Terminology to tell your friends
 
 ---
 
@@ -114,7 +114,7 @@ Any file that your application uses. __Not__ just JavaScript. CSS, images, text 
 
 ## Chunk
 
-A file, or a group of files that Webpack has squashed together
+A file, or a group of files that webpack has squashed together
 
 ---
 
@@ -126,7 +126,7 @@ A file webpack will search from to find dependencies and modules
 
 ## A loader
 
-A Webpack plugin that can parse certain types of files and do something to them
+A function that takes a file's source and transforms it to return a new source file
 
 ---
 
@@ -166,9 +166,9 @@ fetch('https://api.github.com/users/jackfranklin')
 
 ---
 
-## Configuring Webpack
+## Configuring webpack
 
-- Where should Webpack start looking?
+- Where should webpack start looking?
 - Where should it output to?
 
 ---
@@ -224,7 +224,7 @@ main.js  2.63 kB       0  [emitted]  main
 ---
 
 ```
-Webpack is watching the files…
+webpack is watching the files…
 
 Hash: c09c87fc891968a374a6
 Version: webpack 2.1.0-beta.26
@@ -328,7 +328,7 @@ module.exports = {
 
 ---
 
-## Webpack Rules
+## webpack rules
 
 Apply transformations to certain files.
 
@@ -472,7 +472,7 @@ const displayPerson = user =>
 
 ## Let's get some CSS in here
 
-Remember, the goal of Webpack is for it to manage _all_ our assets, CSS included.
+Remember, the goal of webpack is for it to manage _all_ our assets, CSS included.
 
 This is weird at first but stick with me...
 
@@ -593,7 +593,7 @@ __Loaders are applied from right to left, or bottom to top__
 
 ---
 
-## Configuring Webpack differently
+## Configuring webpack differently
 
 ---
 
@@ -639,7 +639,7 @@ npm run build:prod
 
 ## Plugins
 
-A Webpack plugin will typically work on the bundle as a whole, rather than on individual files.
+A webpack plugin will typically work on the bundle as a whole, rather than on individual files.
 
 ---
 
@@ -806,7 +806,7 @@ npm run build:prod
 
 This is a contrived example, because this app is tiny!
 
-You pay a small cost because Webpack has code that it inserts for lazily loading modules, but if your pages are big enough you'll get still save.
+You pay a small cost because webpack has code that it inserts for lazily loading modules, but if your pages are big enough you'll get still save.
 
 ---
 
@@ -845,14 +845,14 @@ bundle.app.ce8bc2ebcec6edbff6a1.js   13.1 kB
 
 ## Lazy loading: not a silver bullet
 
-But when you do want it, Webpack makes it easy :)
+But when you do want it, webpack makes it easy :)
 
 ---
 
 
 ## Bonus: dead code elimination
 
-Webpack 2 can parse ES2015 modules, that is:
+webpack 2 can parse ES2015 modules, that is:
 
 ```js
 import { x } from './y'
@@ -918,7 +918,7 @@ function(t,e,r){r(1),t.exports=r(0)}]);
 
 ---
 
-## Webpack 2 + ES2015 modules = smaller builds, for free!
+## webpack 2 + ES2015 modules = smaller builds, for free!
 
 ---
 
@@ -930,7 +930,7 @@ function(t,e,r){r(1),t.exports=r(0)}]);
 
 ---
 
-## Webpack 2
+## webpack 2
 
 - Much improved documentation & community engagement
 - Improved configuration with a nicer API and automatic validation of config
@@ -942,5 +942,7 @@ function(t,e,r){r(1),t.exports=r(0)}]);
 ## Fin
 
 - Slides & code: https://github.com/jackfranklin/half-stack-webpack
-- Webpack 2: webpack.js.org
+- webpack 2: webpack.js.org
 - Me: @Jack_Franklin, javascriptplayground.com
+
+Thanks to: Glen Maddern, Sean Larkinn, Kent C Dodds
