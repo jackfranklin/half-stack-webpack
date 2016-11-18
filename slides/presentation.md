@@ -787,6 +787,10 @@ form.addEventListener('submit', e => {
 
 ---
 
+![inline](webpack-graph-split.png)
+
+---
+
 ```js
 import './style.css'
 const form = document.getElementById('github-form')
